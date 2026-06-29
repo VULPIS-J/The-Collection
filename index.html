@@ -80,6 +80,8 @@
     transition: all 0.3s ease;
   }
   .menu-btn:hover span { background: var(--accent2); }
+
+  /* ── DROPDOWN ── */
   .menu-dropdown {
     position: fixed; top: 52px; right: 24px; z-index: 200;
     background: rgba(15,15,26,0.97);
@@ -90,7 +92,7 @@
     opacity: 0; pointer-events: none;
     transform: translateY(-8px);
     transition: all 0.25s ease;
-    min-width: 260px;
+    min-width: 280px;
   }
   .menu-dropdown.open { opacity: 1; pointer-events: all; transform: translateY(0); }
   .menu-dropdown p {
@@ -99,6 +101,67 @@
   }
   .menu-dropdown a { color: var(--accent2); text-decoration: none; font-style: normal; }
   .menu-dropdown a:hover { text-decoration: underline; }
+
+  .dropdown-divider {
+    border: none; border-top: 1px solid rgba(196,154,60,0.3); margin: 14px 0;
+  }
+
+  /* ── LOGIN SECTION inside dropdown ── */
+  .login-section { margin-top: 4px; }
+  .login-section-label {
+    font-family: 'Cinzel Decorative', serif; font-size: 0.55rem;
+    letter-spacing: 0.4em; color: var(--accent); text-transform: uppercase;
+    margin-bottom: 12px; opacity: 0.8;
+  }
+  .login-field {
+    display: flex; flex-direction: column; gap: 6px; margin-bottom: 10px;
+  }
+  .login-field label {
+    font-family: 'Cinzel Decorative', serif; font-size: 0.5rem;
+    letter-spacing: 0.3em; color: var(--text-dim); text-transform: uppercase;
+    font-style: normal;
+  }
+  .login-field input {
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(196,154,60,0.2);
+    border-radius: 2px; padding: 7px 12px;
+    color: var(--text); font-family: 'Crimson Pro', serif; font-size: 0.95rem;
+    outline: none; transition: border-color 0.2s;
+    width: 100%;
+  }
+  .login-field input:focus { border-color: rgba(196,154,60,0.5); }
+  .login-btn {
+    width: 100%; margin-top: 6px;
+    background: none; border: 1px solid rgba(196,154,60,0.35);
+    color: var(--accent2); padding: 8px 0;
+    font-family: 'Cinzel Decorative', serif; font-size: 0.55rem;
+    letter-spacing: 0.35em; text-transform: uppercase;
+    cursor: pointer; border-radius: 2px; transition: all 0.2s;
+  }
+  .login-btn:hover { background: rgba(196,154,60,0.08); border-color: var(--accent2); }
+  .login-error {
+    font-family: 'Crimson Pro', serif; font-size: 0.85rem;
+    color: #c0392b; font-style: italic; margin-top: 6px; display: none;
+  }
+  .login-status {
+    display: flex; align-items: center; justify-content: space-between; gap: 8px;
+  }
+  .login-status-name {
+    font-family: 'Crimson Pro', serif; font-size: 0.95rem;
+    color: var(--accent2); font-style: italic;
+  }
+  .logout-btn {
+    background: none; border: none; cursor: pointer;
+    font-family: 'Cinzel Decorative', serif; font-size: 0.5rem;
+    letter-spacing: 0.25em; text-transform: uppercase;
+    color: var(--text-dim); transition: color 0.2s; padding: 4px 0;
+  }
+  .logout-btn:hover { color: #c0392b; }
+  .login-note {
+    font-family: 'Crimson Pro', serif; font-size: 0.78rem;
+    color: var(--text-dim); font-style: italic; line-height: 1.5;
+    margin-top: 8px; opacity: 0.7;
+  }
 
   /* ── HEADER ── */
   header {
@@ -334,38 +397,6 @@
   #modal-doas .doas-finis { margin-top:3.5rem; font-family:'Barlow Condensed',sans-serif; font-weight:700; font-size:0.72rem; letter-spacing:0.35em; text-transform:uppercase; color:#c0392b; }
   #modal-doas em { font-style:italic; color:#ffffff; }
 
-  /* ── TPOR CHAPTER READER ── */
-  #modal-tpor { background:#f3ecd7; color:#2e3b26; font-family:'Fraunces', Georgia, serif; }
-  #modal-tpor .tpor-sheet { display:grid; grid-template-columns: 64px 1fr; min-height:100%; }
-  #modal-tpor .tpor-spine { border-right:1px solid #bcae78; background:#e7dbb3; position:relative; }
-  #modal-tpor .tpor-spine-text { position:sticky; top:0; height:100vh; display:flex; align-items:center; justify-content:center; }
-  #modal-tpor .tpor-spine-text span { font-family:'Quicksand', sans-serif; font-weight:700; font-size:0.72rem; letter-spacing:0.35em; text-transform:uppercase; color:#5b6b45; white-space:nowrap; transform:rotate(-90deg); display:block; }
-  #modal-tpor .tpor-main { padding:0 0 18vh; }
-  #modal-tpor .tpor-masthead { padding:64px 56px 40px; border-bottom:3px solid #2e3b26; }
-  #modal-tpor .tpor-masthead-top { display:flex; justify-content:space-between; align-items:baseline; font-family:'Quicksand', sans-serif; font-weight:700; font-size:0.68rem; letter-spacing:0.15em; text-transform:uppercase; color:#5b6b45; margin-bottom:28px; }
-  #modal-tpor .tpor-masthead-top .pub { color:#9c7a2e; }
-  #modal-tpor h1.tpor-title { font-family:'Fraunces', Georgia, serif; font-weight:700; font-size:clamp(2.2rem, 4.8vw, 3.6rem); line-height:0.98; margin:0 0 14px; letter-spacing:-0.01em; }
-  #modal-tpor .tpor-deck { font-style:italic; font-size:1.1rem; color:#5b6b45; max-width:520px; margin:0; line-height:1.5; }
-  #modal-tpor .tpor-chapter-bar { display:grid; grid-template-columns:auto 1fr auto; align-items:center; gap:18px; padding:22px 56px; background:#2e3b26; color:#f3ecd7; }
-  #modal-tpor .tpor-chapter-num { font-family:'Quicksand', sans-serif; font-weight:700; font-size:0.85rem; letter-spacing:0.2em; text-transform:uppercase; }
-  #modal-tpor .tpor-chapter-bar-title { font-family:'Fraunces', serif; font-weight:700; font-size:1.3rem; text-align:center; }
-  #modal-tpor .tpor-chapter-bar-rule { height:1px; background:rgba(243,236,215,0.3); }
-  #modal-tpor .tpor-article { padding:48px 56px 0; column-count:2; column-gap:48px; font-size:1.05rem; line-height:1.75; }
-  #modal-tpor .tpor-article p { margin:0 0 1.1em; text-align:justify; hyphens:auto; }
-  #modal-tpor .tpor-article p:first-child::first-letter { font-family:'Fraunces', serif; font-weight:700; font-size:4.2em; float:left; line-height:0.78; padding:0.04em 0.08em 0 0; color:#9c7a2e; }
-  #modal-tpor .tpor-article em { color:#5b6b45; font-style:italic; }
-  #modal-tpor .tpor-endmark { column-span:all; text-align:center; margin:36px 0 0; font-family:'Quicksand', sans-serif; color:#a8995f; letter-spacing:0.3em; font-size:0.8rem; }
-  #modal-tpor footer.tpor-colophon { padding:40px 56px 0; margin-top:20px; border-top:1px solid #bcae78; font-family:'Quicksand', sans-serif; font-size:0.68rem; color:#5b6b45; letter-spacing:0.05em; display:flex; justify-content:space-between; flex-wrap:wrap; gap:10px; }
-  @media (max-width:720px){
-    #modal-tpor .tpor-sheet { grid-template-columns:1fr; }
-    #modal-tpor .tpor-spine { display:none; }
-    #modal-tpor .tpor-masthead { padding:40px 22px 28px; }
-    #modal-tpor .tpor-chapter-bar { padding:18px 22px; grid-template-columns:auto auto; }
-    #modal-tpor .tpor-chapter-bar-rule { display:none; }
-    #modal-tpor .tpor-article { padding:32px 22px 0; column-count:1; }
-    #modal-tpor .tpor-article p:first-child::first-letter { font-size:3.4em; }
-  }
-
 </style>
 </head>
 <body>
@@ -377,13 +408,45 @@
 </div>
 
 <div class="menu-dropdown" id="menu-dropdown">
+  <!-- Info section -->
   <p>These are the only official websites:</p>
   <p><a href="https://vulpis-j.github.io/the-collection/" target="_blank">github.com</a></p>
   <p><a href="https://tapas.io" target="_blank">tapas.io</a> (Suspended)</p>
-  <hr style="border:none;border-top:1px solid rgba(196,154,60,0.3);margin:14px 0;">
+  <hr class="dropdown-divider">
   <p>Our Tapas was suspended for some reasons. Will be soon back.</p>
-  <hr style="border:none;border-top:1px solid rgba(196,154,60,0.3);margin:14px 0;">
+  <hr class="dropdown-divider">
   <p>For feedback, reach out to:<br><a href="mailto:vulpisj@proton.me">vulpisj@proton.me</a></p>
+
+  <hr class="dropdown-divider">
+
+  <!-- Login section -->
+  <div class="login-section">
+    <div class="login-section-label">Reader Account</div>
+
+    <!-- Logged-out state -->
+    <div id="login-form-wrap">
+      <div class="login-field">
+        <label for="login-username">Username</label>
+        <input type="text" id="login-username" placeholder="your name" autocomplete="off" maxlength="32">
+      </div>
+      <div class="login-field">
+        <label for="login-pin">PIN</label>
+        <input type="password" id="login-pin" placeholder="4–8 digits" maxlength="8" inputmode="numeric">
+      </div>
+      <div class="login-error" id="login-error">Incorrect PIN.</div>
+      <button class="login-btn" onclick="handleLogin()">Sign In / Register</button>
+      <p class="login-note">Your progress is saved in this browser. A new username creates an account automatically.</p>
+    </div>
+
+    <!-- Logged-in state -->
+    <div id="login-status-wrap" style="display:none;">
+      <div class="login-status">
+        <span class="login-status-name" id="login-status-name"></span>
+        <button class="logout-btn" onclick="handleLogout()">Sign Out</button>
+      </div>
+      <p class="login-note">Your read chapters and scroll positions are saved.</p>
+    </div>
+  </div>
 </div>
 
 <header>
@@ -406,13 +469,6 @@
     <div class="chapter-item" onclick="openStory('taja')">
       <div class="chapter-body">
         <div class="chapter-title">The Adventures of James Alexander</div>
-      </div>
-      <div class="chapter-arrow">→</div>
-    </div>
-
-    <div class="chapter-item" onclick="openStory('tpor')">
-      <div class="chapter-body">
-        <div class="chapter-title">The Princess of Ravengale</div>
       </div>
       <div class="chapter-arrow">→</div>
     </div>
@@ -478,35 +534,101 @@
   </div>
 </div>
 
-<!-- ══ STORY MODAL: The Princess of Ravengale ══ -->
-<div class="story-overlay" id="story-tpor">
-  <div class="story-topbar">
-    <span class="story-label">TPOR</span>
-    <button class="modal-close" onclick="closeStory('tpor')">✕ &nbsp; Close</button>
-  </div>
-  <div class="story-body">
-    <div class="story-title-block">
-      <div class="story-eyebrow">Vulpis J. Presents</div>
-      <div class="story-name">The Princess of Ravengale</div>
-    </div>
-    <p class="story-section-label">Chapters</p>
-    <div id="tpor-chapters">
-
-      <div class="story-chapter-item" onclick="openChapter('tpor', 0)">
-        <div class="chapter-num">I</div>
-        <div class="chapter-body" style="display:flex;align-items:center;gap:12px;">
-          <div class="chapter-title">Worst Case Scenario</div>
-          <span class="read-dot" title="Read"></span>
-        </div>
-        <div class="chapter-arrow">→</div>
-      </div>
-
-    </div>
-  </div>
-</div>
-
 
 <script>
+// ══════════════════════════════════════════
+// AUTH — username + PIN stored in localStorage
+// Progress keys are namespaced per user:
+//   tc_user_{username}_read_{storyId}
+//   tc_user_{username}_scroll_{storyId}_{index}
+// Account records:  tc_account_{username} = { pin }
+// ══════════════════════════════════════════
+
+let currentUser = null; // null = guest
+
+function storageKey(suffix) {
+  const u = currentUser ? currentUser.toLowerCase() : '__guest__';
+  return 'tc_user_' + u + '_' + suffix;
+}
+
+function loadCurrentUser() {
+  try {
+    const saved = localStorage.getItem('tc_active_user');
+    if (saved) {
+      currentUser = saved;
+      showLoggedIn(currentUser);
+    }
+  } catch(e) {}
+}
+
+function handleLogin() {
+  const usernameEl = document.getElementById('login-username');
+  const pinEl = document.getElementById('login-pin');
+  const errorEl = document.getElementById('login-error');
+  const username = usernameEl.value.trim();
+  const pin = pinEl.value.trim();
+
+  errorEl.style.display = 'none';
+
+  if (!username) { showLoginError('Please enter a username.'); return; }
+  if (!pin || pin.length < 4) { showLoginError('PIN must be at least 4 digits.'); return; }
+  if (!/^\d+$/.test(pin)) { showLoginError('PIN must be numbers only.'); return; }
+
+  try {
+    const accountKey = 'tc_account_' + username.toLowerCase();
+    const existing = localStorage.getItem(accountKey);
+
+    if (existing) {
+      // Existing user — verify PIN
+      const account = JSON.parse(existing);
+      if (account.pin !== pin) {
+        showLoginError('Incorrect PIN.');
+        return;
+      }
+    } else {
+      // New user — create account
+      localStorage.setItem(accountKey, JSON.stringify({ pin: pin, created: Date.now() }));
+    }
+
+    // Log in
+    currentUser = username.toLowerCase();
+    localStorage.setItem('tc_active_user', currentUser);
+    usernameEl.value = '';
+    pinEl.value = '';
+    showLoggedIn(currentUser);
+    restoreRead();
+  } catch(e) {
+    showLoginError('Could not save. Storage may be blocked.');
+  }
+}
+
+function handleLogout() {
+  currentUser = null;
+  try { localStorage.removeItem('tc_active_user'); } catch(e) {}
+  showLoggedOut();
+  restoreRead(); // re-render as guest (clears read state visually)
+}
+
+function showLoginError(msg) {
+  const el = document.getElementById('login-error');
+  el.textContent = msg;
+  el.style.display = 'block';
+}
+
+function showLoggedIn(username) {
+  document.getElementById('login-form-wrap').style.display = 'none';
+  document.getElementById('login-status-wrap').style.display = 'block';
+  // Capitalise display name
+  const display = username.charAt(0).toUpperCase() + username.slice(1);
+  document.getElementById('login-status-name').textContent = display;
+}
+
+function showLoggedOut() {
+  document.getElementById('login-form-wrap').style.display = 'block';
+  document.getElementById('login-status-wrap').style.display = 'none';
+  document.getElementById('login-error').style.display = 'none';
+}
+
 // ── MENU ──
 function toggleMenu() {
   document.getElementById('menu-dropdown').classList.toggle('open');
@@ -543,11 +665,6 @@ const STORIES = {
       { label: 'Chaos' },
       { label: 'Goalkeeper' }
     ]
-  },
-  tpor: {
-    chapters: [
-      { label: 'Chapter One' }
-    ]
   }
 };
 
@@ -566,9 +683,7 @@ function updateNavButtons() {
     const el = document.getElementById(id);
     if (el) el.classList.toggle('hidden', !hasNext);
   });
-  const label = activeStory === 'tpor'
-    ? document.getElementById('modal-tpor-label')
-    : document.getElementById('modal-doas-label');
+  const label = document.getElementById('modal-doas-label');
   if (label) label.textContent = STORIES[activeStory].chapters[currentChapter].label;
 }
 
@@ -576,27 +691,34 @@ function markRead(storyId, index) {
   const items = document.querySelectorAll('#' + storyId + '-chapters .story-chapter-item');
   if (items[index]) items[index].classList.add('read');
   try {
-    const key = 'read_' + storyId;
+    const key = storageKey('read_' + storyId);
     const read = JSON.parse(localStorage.getItem(key) || '[]');
     if (!read.includes(index)) { read.push(index); localStorage.setItem(key, JSON.stringify(read)); }
   } catch(e) {}
 }
 
 function restoreRead() {
+  // First clear all read states
+  document.querySelectorAll('.story-chapter-item').forEach(el => el.classList.remove('read'));
+  // Then restore for current user
   Object.keys(STORIES).forEach(storyId => {
     try {
-      const read = JSON.parse(localStorage.getItem('read_' + storyId) || '[]');
-      read.forEach(i => markRead(storyId, i));
+      const key = storageKey('read_' + storyId);
+      const read = JSON.parse(localStorage.getItem(key) || '[]');
+      read.forEach(i => {
+        const items = document.querySelectorAll('#' + storyId + '-chapters .story-chapter-item');
+        if (items[i]) items[i].classList.add('read');
+      });
     } catch(e) {}
   });
 }
 
 function scrollKey(storyId, index) {
-  return 'scroll_' + storyId + '_' + index;
+  return storageKey('scroll_' + storyId + '_' + index);
 }
 
 function activeModalId() {
-  return activeStory === 'tpor' ? 'modal-tpor' : 'modal-doas';
+  return 'modal-doas';
 }
 
 function saveScrollPosition() {
@@ -608,12 +730,11 @@ function saveScrollPosition() {
 }
 
 function restoreScrollPosition(storyId, index) {
-  const modalId = storyId === 'tpor' ? 'modal-tpor' : 'modal-doas';
   try {
     const pos = parseInt(localStorage.getItem(scrollKey(storyId, index)) || '0', 10);
-    document.getElementById(modalId).scrollTop = pos;
+    document.getElementById('modal-doas').scrollTop = pos;
   } catch(e) {
-    document.getElementById(modalId).scrollTop = 0;
+    document.getElementById('modal-doas').scrollTop = 0;
   }
 }
 
@@ -625,18 +746,11 @@ function showDoasChapter(index) {
   if (sub) sub.textContent = STORIES.doas.chapters[index].label;
 }
 
-function showTporChapter(index) {
-  document.querySelectorAll('[id^="tpor-chapter-"]').forEach(el => el.style.display = 'none');
-  const el = document.getElementById('tpor-chapter-' + index);
-  if (el) el.style.display = '';
-}
-
 function openChapter(storyId, index) {
   activeStory = storyId;
   currentChapter = index;
   document.getElementById(activeModalId()).classList.add('open');
   if (storyId === 'doas') showDoasChapter(index);
-  if (storyId === 'tpor') showTporChapter(index);
   restoreScrollPosition(storyId, index);
   updateNavButtons();
   markRead(storyId, index);
@@ -650,7 +764,6 @@ function goChapter(direction) {
     saveScrollPosition();
     currentChapter = next;
     if (activeStory === 'doas') showDoasChapter(next);
-    if (activeStory === 'tpor') showTporChapter(next);
     restoreScrollPosition(activeStory, next);
     updateNavButtons();
   }
@@ -662,17 +775,13 @@ function closeChapter() {
 }
 
 window.addEventListener('popstate', function(e) {
-  // Chapter is open — close it
   const doasOpen = document.getElementById('modal-doas').classList.contains('open');
-  const tporOpen = document.getElementById('modal-tpor').classList.contains('open');
-  if (doasOpen || tporOpen) {
+  if (doasOpen) {
     saveScrollPosition();
     document.getElementById('modal-doas').classList.remove('open');
-    document.getElementById('modal-tpor').classList.remove('open');
     history.pushState({ overlay: 'base' }, '');
     return;
   }
-  // A story list is open — close it
   const openStoryEl = document.querySelector('.story-overlay.open');
   if (openStoryEl) {
     openStoryEl.classList.remove('open');
@@ -681,27 +790,43 @@ window.addEventListener('popstate', function(e) {
     history.pushState({ overlay: 'base' }, '');
     return;
   }
-  // Nothing open — re-push to prevent leaving the page
   history.pushState({ overlay: 'base' }, '');
 });
 
 document.addEventListener('keydown', function(e) {
   if (e.key === 'Escape') {
     const doasOpen = document.getElementById('modal-doas').classList.contains('open');
-    const tporOpen = document.getElementById('modal-tpor').classList.contains('open');
-    if (doasOpen || tporOpen) {
+    if (doasOpen) {
       closeChapter();
     } else {
-      ['taja', 'doas', 'tpor'].forEach(id => closeStory(id));
+      ['taja', 'doas'].forEach(id => closeStory(id));
       document.getElementById('menu-bar').classList.remove('hidden');
       document.body.style.overflow = '';
     }
   }
 });
 
+// Allow pressing Enter in PIN field to submit
+document.addEventListener('DOMContentLoaded', function() {
+  const pinEl = document.getElementById('login-pin');
+  if (pinEl) {
+    pinEl.addEventListener('keydown', function(e) {
+      if (e.key === 'Enter') handleLogin();
+    });
+  }
+  const userEl = document.getElementById('login-username');
+  if (userEl) {
+    userEl.addEventListener('keydown', function(e) {
+      if (e.key === 'Enter') document.getElementById('login-pin').focus();
+    });
+  }
+});
+
+loadCurrentUser();
 restoreRead();
 history.replaceState({ overlay: 'base' }, '');
 </script>
+
 <!-- ══ CHAPTER READER MODAL: DOAS ══ -->
 <div class="modal-overlay" id="modal-doas" style="font-family:'Barlow',sans-serif;">
   <div class="modal-topbar">
@@ -728,107 +853,6 @@ history.replaceState({ overlay: 'base' }, '');
       <div class="doas-finis">— End —</div>
     </div>
 
-  </div>
-</div>
-
-<!-- ══ CHAPTER READER MODAL: TPOR ══ -->
-<div class="modal-overlay" id="modal-tpor">
-  <div class="modal-topbar">
-    <span class="modal-chapter-label" id="modal-tpor-label">Chapter One</span>
-    <button class="modal-close" onclick="closeChapter()">✕ &nbsp; Close</button>
-  </div>
-
-  <div class="tpor-sheet">
-    <div class="tpor-spine">
-      <div class="tpor-spine-text"><span>The Princess of Ravengale</span></div>
-    </div>
-
-    <div class="tpor-main">
-
-      <div id="tpor-chapter-0">
-
-        <div class="tpor-chapter-bar">
-          <span class="tpor-chapter-num">Ch. 01</span>
-          <span class="tpor-chapter-bar-title">Worst Case Scenario</span>
-          <span class="tpor-chapter-bar-rule"></span>
-        </div>
-
-        <article class="tpor-article">
-
-          <p>In my previous life, I was a Swordsmaster. A one that people considered cursed due to the ability that allowed me to fight using both swords and magic.</p>
-          <p>"Does she consider herself a genius or something?" Calling herself the only <em>Swordsmage</em>?"</p>
-          <p>"But I heard she is an excellent Swordsmaster even if she does not use magic." That was what the head, or master, of the magic tower said every time someone criticized me or said I was cursed.</p>
-          <p>The master of the tower might have been more remarkable than me. He was able to reach the 10th phase of magic which none was able to reach for a century. Yet, he reached it while still at the age of 22, making him the youngest in history to become the strongest mage and the master of the tower.</p>
-          <p>He was the only one that recognized my skill, recognized me, as the first person, in history, to fill the gaps in the sword techniques with magic. We even formed parties many times consisting of only the two of us, and went hunting high level dungeons.</p>
-          <p>"Help me catch Aerionar." He said one day. "You are immune to poison, so you will be safe from Aerionar's hallucinogenic toxin."</p>
-          <p>He continued, "I will even lend you my mythic equipment. If we succeed in the raid, I will permanently lend it to you."</p>
-          <p>The sleeping Aerionar. A nickname that was given to a dragon whose underlings are stronger than most dragons. He got it because almost none were able to wake him, and those who did, never lived to tell the tale.</p>
-          <p>Then, how were we able to know if he was awakened before? It is just because when he awakens, he roars. A roar that can be heard over 10 miles away.</p>
-          <p>I knew he –the master of the tower, was trying to use me to catch it, but even if it was just borrowing rather than obtaining, I thought I would at the very least get to use the equipment.</p>
-          <p>So, I foolishly grabbed that treacherous hand.</p>
-          <p>-------</p>
-          <p>"<em>KIEEEEEK!!</em>"</p>
-          <p><em>I have dealt a critical hit to Aerionar.</em> I thought. <em>Aerionar's movements have slowed.</em></p>
-          <p>It moved rashly after getting weakened and tried hitting me with a relatively fast but weak hit. But just as I thought I can block its attack, the mythic sword disappeared from my hands leading to three claws piercing through me. The owner of the sword retrieved it.</p>
-          <p>"Master of the tower? Why?!"</p>
-          <p>"I never thought you would corner Aerionar this much." He spoke. "If I had not retrieved Sirath, you would have finished off Aerionar."</p>
-          <p><em>You retrieved the equipment you lent me because you were afraid I would defend myself and kill Aerionar?</em> I questioned without having the power to say any of it. <em>Because monsters' cores are bound to the person who kills them? How could you...?!</em></p>
-          <p>"Damn it! It is already dead!" He yelled.</p>
-          <p>"Then the core's power goes to that <em>Swordsmage</em> instead of you?" One of his underlings asked.</p>
-          <p>When I heard his underling, I became happy and more hurt. Because the core is mine, owned by its rightful owner, and was hurt because I realised that the master of the tower would not have brought his underlings if he was not aiming for sacrificing me from the very beginning.</p>
-          <p>"It is okay." He said calmly. Raising his mythic sword that <em>I</em> used to defeat the strongest dragon to my throat. "Because newly bound cores can be stolen if you kill the owner."</p>
-          <p>"You will have to die by my hands before you die from your injuries," He continued. "Swordsmage."</p>
-          <p><em>I will not accept such a death.</em> Was what I thought before reaching under my coat and stabbing myself with a one-of-a-kind magic knife. Time stopped, my soul was separated from my body, and my soul was flying fast while I was still able to hear what my physical body heard.</p>
-          <p>"Aerionar has awakened!"</p>
-          <p>"What?! Was it not dead?!"</p>
-          <p>"Runnnn!!"</p>
-          <p>-------</p>
-          <p><em>Where am I? Am I alive? What about Aerionar? Master of the tower?</em> My head filled with questions. <em>What is wrong with my body? My hands got smaller. I am glad to be alive, but... My body is transformed and I cannot even move freely. But... Who is this person that is been next to me?</em></p>
-          <p>A tall handsome man, with golden hair and blue eyes, stood near me, looking at me. He wore something like what a duke would wear in a fantasy novel or such.</p>
-          <p>"This is my daughter?" He spoke. "She looks strange."</p>
-          <p><em>This familiar line...</em></p>
-          <p>Poking at my cheeks, he said, "Why are her cheeks so squishy? Unpleasant."</p>
-          <p><em>It sounds like a line from a doting father in a childcare novel?</em></p>
-          <p>He suddenly took me off the bed with one hand. "Too light. Less presence than a feather. Such a fragile existence..."</p>
-          <p><em>The fancy room and those maids too... These are all fantasy clichés!</em></p>
-          <p>Seeing all these clichés and hearing those lines... I was convinced that my soul went inside a character in a childcare novel. Although it looked like a sweet thing, it is actually bad. I have no way of returning now, because I do not have the magic knife I used.</p>
-          <p>"Father, pardon the intrusion."</p>
-          <p><em>Father?</em></p>
-          <p>The door opened just enough for a child to pass through... And a one did. A child maybe 7 years old that had the same beauty of the man holding me. Gold hair, blue eyes. <em>Is that child also family? </em></p>
-          <p>"What is it?" My father said coldly.</p>
-          <p>"I heard you returned from the subjugation battle."</p>
-          <p>"And?"</p>
-          <p>"I wanted to pay my respects..."</p>
-          <p>"What a pointless thing to do." He glanced over. "Do not bother and go to your room."</p>
-          <p>"Yes."</p>
-          <p><em>So cold! They are clearly family, is not that too harsh?</em></p>
-          <p>"Wait." He remembered something that clearly made him a bit angry. "Juliet told me that you caused a noisy incident while I was away."</p>
-          <p>"That was–"</p>
-          <p>"I have no intention of tolerating such behaviour... Alicia Ravengale."</p>
-          <p><em>Ravengale...?</em></p>
-          <p>"As the older sister, you should set an example for newborn sibling."</p>
-          <p><em>Eh? She was the older sister? She is so handsome that I thought she was a boy!</em></p>
-          <p>"...Yes, father. I will keep that in mind." And she got out.</p>
-          <p><em>...Strange. I feel like I have seen this situation somewhere before. I think it was in the content of a novel I read...</em></p>
-          <p><em>Ravengale, Ravengale...</em></p>
-          <p><em>Ah! The Revenge of Alicia!</em></p>
-          <p><em>...WAIT A MINUTE.</em></p>
-          <p><em>This is not childcare!</em></p>
-          <p>The Revenge of Alicia was the last novel I read, it is about the revenge of a regressed protagonist. The protagonist's name is Alicia Ravengale. The target of the revenge is... The younger sister who took everything from her –Diana Ravengale. <em>That is me...</em></p>
-          <p>The Diana I possessed, unlike most Dianas in fantasies, was a villain who bullied her older sister Alicia Ravengale out of jealousy and then murdered her. So, what else would Alicia do after regressing from being murdered by her younger sister!</p>
-          <p><em>I am as good as dead now!</em></p>
-
-          <p class="tpor-endmark"style="text-align: center;">— TO BE CONTINUED... —</p>
-
-        </article>
-
-        <footer class="tpor-colophon">
-          <span>© Vulpis J. — All rights reserved.</span>
-        </footer>
-
-      </div>
-
-    </div>
   </div>
 </div>
 
